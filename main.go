@@ -9,7 +9,7 @@ import (
 func main() {
 	lndHost := "10.128.0.7:10009"
 	tlsPath := "lnd_tls.cert"
-	macDir := "./nam"
+	macDir := "lnd_admin.macaroon"
 	network := "testnet" // testnet
 
 	lndpayService, err := lndpay.NewInstance(lndHost, tlsPath, macDir, network)
