@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	lndHost := "34.28.120.31:10009"
+	lndHost := "10.128.0.7:10009"
 	tlsPath := "lnd_tls.cert"
 	macDir := "./nam"
 	network := "testnet" // testnet
