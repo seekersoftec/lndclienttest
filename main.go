@@ -22,5 +22,5 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println(&info)
+	fmt.Println(info)
 }
