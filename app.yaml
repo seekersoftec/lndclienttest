@@ -1,0 +1,15 @@
+service: lndpay-service
+runtime: go120
+env: standard
+env_variables:
+  GIN_MODE: release
+  GOOGLE_APPLICATION_CREDENTIALS: bitspend
+  GAE_USE_SOCKETS_HTTPLIB : 'anyvalue'
+
+vpc_access_connector:
+  name: projects/bitspend/locations/us-central1/connectors/lnd-connector
+  egress_setting: all-traffic
+
+handlers:
+  - url: /.*
+    script: auto

@@ -13,7 +13,7 @@ type Service struct {
 }
 
 func NewInstance(lndHost string, tlsPath string, macarroonDir string, networkType string) (*Service, error) {
-	lnrpcClient, err := lndclient.NewBasicClient(lndHost, tlsPath, macarroonDir, networkType, lndclient.MacFilename("lnd_admin.macaroon"))
+	lnrpcClient, err := lndclient.NewBasicClient(lndHost, tlsPath, macarroonDir, networkType, lndclient.MacFilename("admin.macaroon"))
 	if err != nil {
 		return nil, err
 	}
