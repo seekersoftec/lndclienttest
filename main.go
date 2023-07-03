@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"log"
 
 	"github.com/Bitspend01/lndclienttest/lndpay"
@@ -10,7 +8,7 @@ import (
 )
 
 func main() {
-	lndHost := "10.128.0.7" // 10.128.0.7
+	lndHost := "34.28.120.31" //"34.0.192.244" // 10.128.0.7
 	tlsPath := "./tls.cert"
 	macDir := "./"
 	network := "testnet" // testnet
@@ -20,21 +18,27 @@ func main() {
 		panic(err)
 	}
 
-	info, err := lndpayService.GetInfo()
-	if err != nil {
-		panic(err)
-	}
-
 	router := gin.Default()
 
-	router.GET("", func(c *gin.Context) {
-		log.Println(fmt.Sprintf("%v", info))
-
+	router.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"info": info,
+			"message": "LND Service",
+		})
+	})
+
+	router.GET("/info", func(c *gin.Context) {
+		info, err := lndpayService.GetInfo()
+		if err != nil {
+			log.Fatalf("%v", err)
+			panic(err)
+		}
+
+		//
+		log.Printf("%v", info)
+		c.JSON(200, gin.H{
+			"message": info,
 		})
 	})
 
 	router.Run(":8080")
-
 }
